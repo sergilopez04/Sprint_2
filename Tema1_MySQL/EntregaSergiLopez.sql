@@ -6,3 +6,4 @@ SELECT nombre as nombreProducto, precio as precioEuro, precio * (1.08090) as pre
 SELECT UPPER(nombre) as nombre, precio FROM producto;
 SELECT LOWER(nombre) as nombre, precio FROM producto;
 SELECT nombre, UPPER(LEFT(nombre, 2)) as inicials FROM fabricante;
+SELECT nombre, ROUND(precio, 2) AS precioRedondeado FROM producto;
