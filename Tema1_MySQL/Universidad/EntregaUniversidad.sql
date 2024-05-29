@@ -1,0 +1,1 @@
+SELECT apellido1, apellido2, nombre FROM alumnos;
