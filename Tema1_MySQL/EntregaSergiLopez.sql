@@ -14,4 +14,7 @@ SELECT nombre FROM fabricante ORDER BY nombre ASC;
 SELECT nombre FROM fabricante ORDER BY nombre DESC;
 SELECT nombre, precio FROM producto ORDER BY nombre ASC, precio DESC; 
 SELECT * FROM fabricante LIMIT 5;
-SELECT fabricante 
+SELECT * FROM fabricante LIMIT 3, 2;
+SELECT nombre, precio FROM producto ORDER BY precio LIMIT 1;
+SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+SELECT nombre FROM producto WHERE codigo = 2;
