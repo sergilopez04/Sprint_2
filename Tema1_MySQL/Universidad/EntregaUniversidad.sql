@@ -13,3 +13,10 @@ SELECT d.nombre AS nom_departament FROM departamento d LEFT JOIN profesor pr ON 
 SELECT a.nombre AS nom_assignatura FROM asignatura a LEFT JOIN profesor pr ON a.id_profesor = pr.id_profesor WHERE a.id_profesor IS NULL;
 SELECT d.nombre FROM departamento d LEFT JOIN profesor pr ON d.id = pr.id_departamento LEFT join asignatura a ON pr.id_profesor = a.id_profesor WHERE a.id IS NULL;
 SELECT COUNT(*) AS totalAlumnes FROM persona p JOIN alumno_se_matricula_asignatura asma ON p.id = asma.id_alumno;
+SELECT COUNT(*) AS totalAlumnes99 FROM persona p JOIN alumno_se_matricula_asignatura asma ON p.id = asma.id_alumno WHERE YEAR(p.fecha_nacimiento) = 1999;
+SELECT d.nombre AS nomDepartamento, COUNT(pr.id_profesor) AS nomProfesor FROM departamento d JOIN profesor pr ON d.id = pr.id_departamento GROUP BY d.nombre ORDER BY nomProfesor DESC;
+SELECT d.nombre AS nomDepartamento, COUNT(pr.id_profesor) AS nomProfesores FROM departamento d LEFT JOIN profesor pr ON d.id = pr.id_departamento GROUP BY d.nombre;
+SELECT g.nombre AS nomGrado, COUNT(a.id) AS nomAsignaturas FROM grado g LEFT JOIN asignatura a ON g.id = a.id_grado GROUP BY g.nombre Order BY nomAsignaturas DESC;
+SELECT g.nombre AS nomGrado, COUNT(a.id) AS nomAsignaturas FROM grado g LEFT JOIN asignatura a ON g.id = a.id_grado GROUP BY g.nombre HAVING nomAsignaturas > 40;
+SELECT g.nombre AS nomGrado, a.tipo AS tipoAsignatura, SUM(a.creditos) AS sumaCreditos FROM grado g JOIN asignatura a ON g.id = a.id_grado GROUP BY g.nombre, a.tipo;
+SELECT ce.anyo_inicio, COUNT(DISTINCT asma.id_alumno) AS nomAlumnos FROM curso_escolar ce JOIN alumno_se_matricula_asignatura asma ON ce.id = asma.id_curso_escolar GROUP BY ce.anyo_inicio;
