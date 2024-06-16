@@ -1,5 +1,6 @@
 <?php
 require_once "Fruta.php";
+require_once "TipoFruta.php";
 
 class Fruteria {
     public string $nombreTienda;
@@ -16,13 +17,13 @@ class Fruteria {
 
     public function buscarFrutaTipo(string $tipoBuscado){
         foreach ($this->inventario as $fruta) {
-            if ($fruta->tipo->getTipo() === $tipoBuscado) {
+            if ($fruta->tipo->getTipoFruta() === $tipoBuscado) {
                 echo $fruta->__toString();
             }
         }
     }
 
-    public function buscarQueMaduraMasTarde(): void{
+    public function buscarQueMaduraMasTarde(): void {
         $maxDias = 0;
         $frutaMaduracionTardia = null;
         foreach ($this->inventario as $fruta) {
@@ -31,7 +32,9 @@ class Fruteria {
                 $frutaMaduracionTardia = $fruta;
             }
         }
-        echo "La fruta que tarda más en brotar es: " .PHP_EOL. $frutaMaduracionTardia->__toString();
+        if ($frutaMaduracionTardia) {
+            echo "La fruta que tarda más en madurar es: " . PHP_EOL . $frutaMaduracionTardia->__toString();
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-enum tipoFruta: string {
+enum TipoFruta: string {
     case citrico = "Cítrico";
     case tropical = "Tropical";
     case baya = "Baya";

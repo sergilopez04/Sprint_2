@@ -1,13 +1,13 @@
 <?php
-require_once "tipoFruta.php";
+require_once "TipoFruta.php";
 
 class Fruta{
     public string $nombre;
     public int $diasMaduracion;
-    public tipoFruta $tipo;
+    public TipoFruta $tipo;
 
 
-    public function __construct(string $nombre, int $diasMaduracion, tipoFruta $tipo)
+    public function __construct(string $nombre, int $diasMaduracion, TipoFruta $tipo)
     {
         $this->nombre = $nombre;
         $this->diasMaduracion = $diasMaduracion;
@@ -16,7 +16,7 @@ class Fruta{
 
     public function __toString(): string
     {
-        $mensaje = "Soy $this->nombre, maduro en $this->diasMaduracion días y pertenezo a $this->tipo".PHP_EOL;
+        $mensaje = "Soy $this->nombre, maduro en $this->diasMaduracion días y pertenezco a " . $this->tipo->getTipoFruta() . PHP_EOL;
         return $mensaje;
     }
 }
