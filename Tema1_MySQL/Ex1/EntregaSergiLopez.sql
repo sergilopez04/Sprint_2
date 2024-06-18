@@ -1,6 +1,6 @@
 SELECT nombre FROM producto;
 SELECT nombre, precio FROM producto;
-SELECT * FROM producto;
+SHOW COLUMNS FROM producto;
 SELECT nombre, precio, precio * (1.08090) FROM producto;
 SELECT nombre as nombreProducto, precio as precioEuro, precio * (1.08090) as precioDolarEstadounidenc FROM producto;
 SELECT UPPER(nombre) as nombre, precio FROM producto;
@@ -26,7 +26,8 @@ SELECT nombre, apellido1, apellido2, nif FROM universidad.persona WHERE tipo LIK
 SELECT nombre FROM asignatura WHERE cuatrimestre = 1 AND curso = 3 AND  id_grado = 7;
 SELECT persona.nombre, persona.apellido1, persona.apellido2, departamento.nombre AS nombreDepartamento FROM persona JOIN profesor ON persona.id = profesor.id_profesor JOIN departamento ON profesor.id_departamento = departamento.id ORDER BY persona.apellido1, persona.apellido2, persona.nombre;
 SELECT a.nombre, ce.anyo_inicio, ce.anyo_fin FROM asignatura a JOIN alumno_se_matricula_asignatura asa ON a.id = asa.id_asignatura JOIN curso_escolar ce ON asa.id_curso_escolar = ce.id JOIN persona p ON asa.id_alumno = p.id WHERE p.NIF = '26902806M';
-SELECT DISTINCT d.nombre FROM departamento d JOIN profesor p ON d.id = p.id_departamento JOIN asignatura a ON p.id_profesor JOIN grado g ON a.id_grado = g.id WHERE g.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+SELECT DISTINCT d.nombre
+FROM departamento d JOIN profesor p ON d.id = p.id_departamento JOIN asignatura a ON p.id_profesor = a.id_profesor JOIN grado g ON a.id_grado = g.id WHERE g.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
 SELECT DISTINCT p.nombre, p.apellido1, p.apellido2 FROM persona p JOIN alumno_se_matricula_asignatura asa ON p.id = asa.id_alumno JOIN curso_escolar ce ON asa.id_curso_escolar = ce.id WHERE ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
 SELECT d.nombre AS nom_departament, p.apellido1, p.apellido2, p.nombre AS nom_professor FROM profesor pr LEFT JOIN departamento d ON pr.id_departamento = d.id JOIN persona p ON pr.id_profesor = p.id ORDER BY d.nombre ASC, p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
 SELECT p.nombre, p.apellido1, p.apellido2 FROM profesor pr LEFT JOIN departamento d ON pr.id_departamento = d.id JOIN persona p ON pr.id_profesor = p.id WHERE d.id IS NULL;
